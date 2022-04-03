@@ -130,7 +130,7 @@ function connectSocket() {
                     text: `Nieuwe map laden (reden: ${data.reason ? data.reason : 'verbonden met server'})...`,
                     duration: 10000
                 }).showToast();
-                currentOrderCtx = await getCanvasFromUrl(`https://i.imgur.com/qfX9Y8C.png`, currentOrderCanvas);
+                currentOrderCtx = await getCanvasFromUrl(`https://i.imgur.com/mYmiutZ.png`, currentOrderCanvas);
                 order = getRealWork(currentOrderCtx.getImageData(0, 0, 2000, 1000).data);
                 Toastify({
                     text: `Nieuwe map geladen, ${order.length} pixels in totaal`,
