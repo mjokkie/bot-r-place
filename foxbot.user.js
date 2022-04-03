@@ -82,12 +82,12 @@ let getPendingWork = (work, rgbaOrder, rgbaCanvas) => {
     currentPlaceCanvas = document.body.appendChild(currentPlaceCanvas);
 
     Toastify({
-        text: 'Accesstoken ophalen...',
+        text: 'Getting Accesstoken...',
         duration: 10000
     }).showToast();
     accessToken = await getAccessToken();
     Toastify({
-        text: 'Accesstoken opgehaald!',
+        text: 'Accesstoken received!',
         duration: 10000
     }).showToast();
 
@@ -193,7 +193,7 @@ async function attemptPlace() {
     const hex = rgbaOrderToHex(i, rgbaOrder);
 
     Toastify({
-        text: `trying to place pixel at ${x}, ${y}... (${percentComplete}% compleet)`,
+        text: `trying to place pixel at ${x}, ${y}... (${percentComplete}% complete)`,
         duration: 10000
     }).showToast();
 
