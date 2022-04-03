@@ -83,12 +83,12 @@ let getPendingWork = (work, rgbaOrder, rgbaCanvas) => {
 
     Toastify({
         text: 'Getting Accesstoken...',
-        duration: 10000
+        duration: 1000
     }).showToast();
     accessToken = await getAccessToken();
     Toastify({
         text: 'Accesstoken received!',
-        duration: 10000
+        duration: 1000
     }).showToast();
 
     connectSocket();
@@ -130,7 +130,7 @@ function connectSocket() {
                 //    text: `Nieuwe map laden (reden: ${data.reason ? data.reason : 'verbonden met server'})...`,
                 //    duration: 10000
                 //}).showToast();
-                currentOrderCtx = await getCanvasFromUrl(`https://i.imgur.com/mYmiutZ.png`, currentOrderCanvas);
+                currentOrderCtx = await getCanvasFromUrl(`https://i.imgur.com/T2CVNME.png`, currentOrderCanvas);
                 order = getRealWork(currentOrderCtx.getImageData(0, 0, 2000, 1000).data);
                 Toastify({
                     text: `loaded image, ${order.length} total pixels`,
