@@ -1,21 +1,20 @@
 // ==UserScript==
-// @name         PlaceNL Bot
-// @namespace    https://github.com/PlaceNL/Bot
-// @version      13
-// @description  De bot voor PlaceNL!
-// @author       NoahvdAa
+// @name         r/foxes bot
+// @namespace    https://github.com/mjokkie/fox
+// @version      1
+// @description  the bot for r/foxes!
+// @author       orignial: NoahvdAa, mjokkie 
 // @match        https://www.reddit.com/r/place/*
 // @match        https://new.reddit.com/r/place/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=reddit.com
 // @require	     https://cdn.jsdelivr.net/npm/toastify-js
 // @resource     TOASTIFY_CSS https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css
-// @updateURL    https://github.com/PlaceNL/Bot/raw/master/placenlbot.user.js
-// @downloadURL  https://github.com/PlaceNL/Bot/raw/master/placenlbot.user.js
+// @updateURL    https://github.com/mjokkie/fox/raw/main/foxbot.js
+// @downloadURL  https://github.com/mjokkie/fox/raw/main/foxbot.js
 // @grant        GM_getResourceText
 // @grant        GM_addStyle
 // ==/UserScript==
 
-// Sorry voor de rommelige code, haast en clean gaatn iet altijd samen ;)
 
 var socket;
 var order = undefined;
@@ -132,9 +131,7 @@ function connectSocket() {
                     duration: 10000
                 }).showToast();
                 currentOrderCtx = await getCanvasFromUrl(`https://i.imgur.com/qfX9Y8C.png`, currentOrderCanvas);
-                console.log(currentOrderCtx)
                 order = getRealWork(currentOrderCtx.getImageData(0, 0, 2000, 1000).data);
-                console.log(order)
                 Toastify({
                     text: `Nieuwe map geladen, ${order.length} pixels in totaal`,
                     duration: 10000
