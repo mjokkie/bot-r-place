@@ -78,11 +78,11 @@ let getPendingWork = (work, rgbaOrder, rgbaCanvas) => {
 (async function () {
     GM_addStyle(GM_getResourceText('TOASTIFY_CSS'));
     currentOrderCanvas.width = 2000;
-    currentOrderCanvas.height = 1000;
+    currentOrderCanvas.height = 2000;
     currentOrderCanvas.style.display = 'none';
     currentOrderCanvas = document.body.appendChild(currentOrderCanvas);
     currentPlaceCanvas.width = 2000;
-    currentPlaceCanvas.height = 1000;
+    currentPlaceCanvas.height = 2000;
     currentPlaceCanvas.style.display = 'none';
     currentPlaceCanvas = document.body.appendChild(currentPlaceCanvas);
 
@@ -187,8 +187,8 @@ async function attemptPlace() {
         return;
     }
 
-    const rgbaOrder = currentOrderCtx.getImageData(0, 0, 2000, 1000).data;
-    const rgbaCanvas = ctx.getImageData(0, 0, 2000, 1000).data;
+    const rgbaOrder = currentOrderCtx.getImageData(0, 0, 2000, 2000).data;
+    const rgbaCanvas = ctx.getImageData(0, 0, 2000, 2000).data;
     const work = getPendingWork(order, rgbaOrder, rgbaCanvas);
 
     if (work.length === 0) {
