@@ -126,7 +126,7 @@ function connectSocket() {
 
         switch (data.type.toLowerCase()) {
             case 'map':
-                currentOrderCtx = await getCanvasFromUrl(`https://i.imgur.com/Q394a4t.png`, currentOrderCanvas, 0, 0, true);
+                currentOrderCtx = await getCanvasFromUrl(`https://i.imgur.com/rS1xKqf.png`, currentOrderCanvas, 0, 0, true);
                 order = getRealWork(currentOrderCtx.getImageData(0, 0, 2000, 2000).data);
                 Toastify({
                     text: `Loaded image, ${order.length} pixels in total`,
