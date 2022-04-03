@@ -25,7 +25,7 @@ var currentOrderCtx = currentOrderCanvas.getContext('2d');
 var currentPlaceCanvas = document.createElement('canvas');
 
 // Global constants
-const DEFAULT_TOAST_DURATION_MS = 2000;
+const DEFAULT_TOAST_DURATION_MS = 5000;
 
 const COLOR_MAPPINGS = {
     '#BE0039': 1,
