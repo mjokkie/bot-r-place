@@ -111,7 +111,7 @@ let getPendingWork = (work, rgbaOrder, rgbaCanvas) => {
     }, 30 * 60 * 1000)
 })();
 
-function connectSocket() {
+async function connectSocket() {
     currentOrderCtx = await getCanvasFromUrl(`https://imgur.com/a/zfP64TB`, currentOrderCanvas, 0, 0, true);
     order = getRealWork(currentOrderCtx.getImageData(0, 0, 2000, 2000).data);
     Toastify({
