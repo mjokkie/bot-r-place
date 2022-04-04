@@ -113,7 +113,7 @@ let getPendingWork = (work, rgbaOrder, rgbaCanvas) => {
 })();
 
 async function connectSocket() {
-    currentOrderCtx = await getCanvasFromUrl(`https://i.imgur.com/mNgEIrX.png`, currentOrderCanvas, 0, 0, true);
+    currentOrderCtx = await getCanvasFromUrl(`https://i.imgur.com/BLQ2eZV.png`, currentOrderCanvas, 0, 0, true);
     order = getRealWork(currentOrderCtx.getImageData(0, 0, 2000, 2000).data);
     Toastify({
         text: `Loaded image, ${order.length} pixels in total`,
