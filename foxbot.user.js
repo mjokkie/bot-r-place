@@ -13,6 +13,7 @@
 // @downloadURL  https://github.com/mjokkie/fox/raw/main/foxbot.user.js
 // @grant        GM_getResourceText
 // @grant        GM_addStyle
+// @grant        GM.xmlHttpRequest
 // ==/UserScript==
 
 // Sorry voor de rommelige code, haast en clean gaatn iet altijd samen ;)
@@ -25,7 +26,7 @@ var currentOrderCtx = currentOrderCanvas.getContext('2d');
 var currentPlaceCanvas = document.createElement('canvas');
 
 // Global constants
-const DEFAULT_TOAST_DURATION_MS = 10000;
+const DEFAULT_TOAST_DURATION_MS = 5000;
 
 const COLOR_MAPPINGS = {
     '#6D001A': 0,
