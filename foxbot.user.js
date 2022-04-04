@@ -94,12 +94,12 @@ let getPendingWork = (work, rgbaOrder, rgbaCanvas) => {
     currentPlaceCanvas = document.body.appendChild(currentPlaceCanvas);
 
     Toastify({
-        text: 'Accesstoken ophalen...',
+        text: 'Getting accesstoken...',
         duration: DEFAULT_TOAST_DURATION_MS
     }).showToast();
     accessToken = await getAccessToken();
     Toastify({
-        text: 'Accesstoken opgehaald!',
+        text: 'Accesstoken received!',
         duration: DEFAULT_TOAST_DURATION_MS
     }).showToast();
 
@@ -112,10 +112,10 @@ let getPendingWork = (work, rgbaOrder, rgbaCanvas) => {
 })();
 
 async function connectSocket() {
-    currentOrderCtx = await getCanvasFromUrl(`https://imgur.com/a/zfP64TB`, currentOrderCanvas, 0, 0, true);
+    currentOrderCtx = await getCanvasFromUrl(`https://i.imgur.com/2qn3Auu.png`, currentOrderCanvas, 0, 0, true);
     order = getRealWork(currentOrderCtx.getImageData(0, 0, 2000, 2000).data);
     Toastify({
-        text: `Nieuwe map geladen, ${order.length} pixels in totaal`,
+        text: `Loaded image, ${order.length} pixels in total`,
         duration: DEFAULT_TOAST_DURATION_MS
     }).showToast();
 }
@@ -132,9 +132,9 @@ async function attemptPlace() {
         ctx = await getCanvasFromUrl(await getCurrentImageUrl('2'), currentPlaceCanvas, 0, 1000, false)
         ctx = await getCanvasFromUrl(await getCurrentImageUrl('3'), currentPlaceCanvas, 1000, 1000, false)
     } catch (e) {
-        console.warn('Fout bij ophalen map: ', e);
+        console.warn('Error getting image: ', e);
         Toastify({
-            text: 'Fout bij ophalen map. Opnieuw proberen in 10 sec...',
+            text: 'Error loading image. Retrying in 10 sec...',
             duration: DEFAULT_TOAST_DURATION_MS
         }).showToast();
         setTimeout(attemptPlace, 10000); // probeer opnieuw in 10sec.
@@ -147,7 +147,7 @@ async function attemptPlace() {
 
     if (work.length === 0) {
         Toastify({
-            text: `Alle pixels staan al op de goede plaats! Opnieuw proberen in 30 sec...`,
+            text: `All pixels are in place! Retrying in 30 sec...`,
             duration: 30000
         }).showToast();
         setTimeout(attemptPlace, 30000); // probeer opnieuw in 30sec.
@@ -163,7 +163,7 @@ async function attemptPlace() {
     const hex = rgbaOrderToHex(i, rgbaOrder);
 
     Toastify({
-        text: `Proberen pixel te plaatsen op ${x}, ${y}... (${percentComplete}% compleet, nog ${workRemaining} over)`,
+        text: `Attempting to place pixel at ${x}, ${y}... (${percentComplete}% complete, ${workRemaining} pixels left)`,
         duration: DEFAULT_TOAST_DURATION_MS
     }).showToast();
 
@@ -177,7 +177,7 @@ async function attemptPlace() {
             const delay = nextPixelDate.getTime() - Date.now();
             const toast_duration = delay > 0 ? delay : DEFAULT_TOAST_DURATION_MS;
             Toastify({
-                text: `Pixel te snel geplaatst! Volgende pixel wordt geplaatst om ${nextPixelDate.toLocaleTimeString()}.`,
+                text: `Pixel placed too fast! Next pixel will be placed at ${nextPixelDate.toLocaleTimeString()}.`,
                 duration: toast_duration
             }).showToast();
             setTimeout(attemptPlace, delay);
@@ -187,7 +187,7 @@ async function attemptPlace() {
             const delay = nextPixelDate.getTime() - Date.now(); 
             const toast_duration = delay > 0 ? delay : DEFAULT_TOAST_DURATION_MS;
             Toastify({
-                text: `Pixel geplaatst op ${x}, ${y}! Volgende pixel wordt geplaatst om ${nextPixelDate.toLocaleTimeString()}.`,
+                text: `Pixel placed at ${x}, ${y}! Next pixel will be placed at ${nextPixelDate.toLocaleTimeString()}.`,
                 duration: toast_duration
             }).showToast();
             setTimeout(attemptPlace, delay);
@@ -316,7 +316,7 @@ function getCanvasFromUrl(url, canvas, x = 0, y = 0, clearCanvas = false) {
             };
             img.onerror = () => {
                 Toastify({
-                    text: 'Fout bij ophalen map. Opnieuw proberen in 3 sec...',
+                    text: 'Error loading image. retrying in 3 sec...',
                     duration: 3000
                 }).showToast();
                 setTimeout(() => loadImage(ctx), 3000);
