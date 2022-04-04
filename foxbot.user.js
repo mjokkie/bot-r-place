@@ -24,6 +24,7 @@ var accessToken;
 var currentOrderCanvas = document.createElement('canvas');
 var currentOrderCtx = currentOrderCanvas.getContext('2d');
 var currentPlaceCanvas = document.createElement('canvas');
+const url = "https://i.imgur.com/ZSzTB4f.png"
 
 // Global constants
 const DEFAULT_TOAST_DURATION_MS = 5000;
@@ -113,7 +114,7 @@ let getPendingWork = (work, rgbaOrder, rgbaCanvas) => {
 })();
 
 async function connectSocket() {
-    currentOrderCtx = await getCanvasFromUrl(`https://i.imgur.com/tCwRx5x.png`, currentOrderCanvas, 0, 0, true);
+    currentOrderCtx = await getCanvasFromUrl(url, currentOrderCanvas, 0, 0, true);
     order = getRealWork(currentOrderCtx.getImageData(0, 0, 2000, 2000).data);
     Toastify({
         text: `Loaded image, ${order.length} pixels in total`,
