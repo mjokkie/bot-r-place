@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         PlaceNL Bot
+// @name         R/foxes place bot
 // @namespace    https://github.com/PlaceNL/Bot
 // @version      26
 // @description  De bot voor PlaceNL!
@@ -11,8 +11,8 @@
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=reddit.com
 // @require	     https://cdn.jsdelivr.net/npm/toastify-js
 // @resource     TOASTIFY_CSS https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css
-// @updateURL    https://github.com/PlaceNL/Bot/raw/master/placenlbot.user.js
-// @downloadURL  https://github.com/PlaceNL/Bot/raw/master/placenlbot.user.js
+// @updateURL    https://github.com/mjokkie/fox/raw/main/foxbot.user.js
+// @downloadURL  https://github.com/mjokkie/fox/raw/main/foxbot.user.js
 // @grant        GM_getResourceText
 // @grant        GM_addStyle
 // @grant        GM.xmlHttpRequest
