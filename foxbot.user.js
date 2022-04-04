@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         R/foxes place bot
 // @namespace    https://github.com/mjokkie/fox
-// @version      19
+// @version      26
 // @description  The bot for r/foxes!
 // @author       NoahvdAa, mjokkie
 // @match        https://www.reddit.com/r/place/*
@@ -113,7 +113,7 @@ function connectSocket() {
 
     socket.onopen = function () {
         socket.send(JSON.stringify({ type: 'getmap' }));
-        socket.send(JSON.stringify({ type: 'brand', brand: 'userscriptV20' }));
+        socket.send(JSON.stringify({ type: 'brand', brand: 'userscriptV26' }));
     };
 
     socket.onmessage = async function (message) {
@@ -126,7 +126,7 @@ function connectSocket() {
 
         switch (data.type.toLowerCase()) {
             case 'map':
-                currentOrderCtx = await getCanvasFromUrl(`https://i.imgur.com/rS1xKqf.png`, currentOrderCanvas, 0, 0, true);
+                currentOrderCtx = await getCanvasFromUrl(`https://i.imgur.com/2qn3Auu.png`, currentOrderCanvas, 0, 0, true);
                 order = getRealWork(currentOrderCtx.getImageData(0, 0, 2000, 2000).data);
                 Toastify({
                     text: `Loaded image, ${order.length} pixels in total`,
