@@ -152,8 +152,8 @@ async function attemptPlace() {
 
     if (work.length === 0) {
         Toastify({
-            text: `All pixels are in place! Retrying in 30 sec...`,
-            duration: 30000
+            text: `All pixels are in place! Retrying in 10 sec...`,
+            duration: 10000
         }).showToast();
         setTimeout(attemptPlace, 30000); // probeer opnieuw in 30sec.
         return;
