@@ -1,13 +1,11 @@
 // ==UserScript==
 // @name         R/foxes place bot
-// @namespace    https://github.com/PlaceNL/Bot
+// @namespace    https://github.com/mjokkie/fox
 // @version      26
-// @description  De bot voor PlaceNL!
-// @author       NoahvdAa
+// @description  The bot for r/foxes!
+// @author       NoahvdAa, mjokkie
 // @match        https://www.reddit.com/r/place/*
 // @match        https://new.reddit.com/r/place/*
-// @connect      reddit.com
-// @connect      placenl.noahvdaa.me
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=reddit.com
 // @require	     https://cdn.jsdelivr.net/npm/toastify-js
 // @resource     TOASTIFY_CSS https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css
@@ -15,7 +13,6 @@
 // @downloadURL  https://github.com/mjokkie/fox/raw/main/foxbot.user.js
 // @grant        GM_getResourceText
 // @grant        GM_addStyle
-// @grant        GM.xmlHttpRequest
 // ==/UserScript==
 
 // Sorry voor de rommelige code, haast en clean gaatn iet altijd samen ;)
