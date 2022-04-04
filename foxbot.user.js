@@ -105,74 +105,19 @@ let getPendingWork = (work, rgbaOrder, rgbaCanvas) => {
 
     connectSocket();
     attemptPlace();
-
-    setInterval(() => {
-        if (socket && socket.readyState === WebSocket.OPEN) socket.send(JSON.stringify({ type: 'ping' }));
-    }, 5000);
+    
     setInterval(async () => {
         accessToken = await getAccessToken();
     }, 30 * 60 * 1000)
 })();
 
 function connectSocket() {
+    currentOrderCtx = await getCanvasFromUrl(`https://imgur.com/a/zfP64TB`, currentOrderCanvas, 0, 0, true);
+    order = getRealWork(currentOrderCtx.getImageData(0, 0, 2000, 2000).data);
     Toastify({
-        text: 'Verbinden met PlaceNL server...',
+        text: `Nieuwe map geladen, ${order.length} pixels in totaal`,
         duration: DEFAULT_TOAST_DURATION_MS
     }).showToast();
-
-    socket = new WebSocket('wss://placenl.noahvdaa.me/api/ws');
-
-    socket.onopen = function () {
-        Toastify({
-            text: 'Verbonden met PlaceNL server!',
-            duration: DEFAULT_TOAST_DURATION_MS
-        }).showToast();
-        socket.send(JSON.stringify({ type: 'getmap' }));
-        socket.send(JSON.stringify({ type: 'brand', brand: 'userscriptV26' }));
-    };
-
-    socket.onmessage = async function (message) {
-        var data;
-        try {
-            data = JSON.parse(message.data);
-        } catch (e) {
-            return;
-        }
-
-        switch (data.type.toLowerCase()) {
-            case 'map':
-                Toastify({
-                    text: `Nieuwe map laden (reden: ${data.reason ? data.reason : 'verbonden met server'})...`,
-                    duration: DEFAULT_TOAST_DURATION_MS
-                }).showToast();
-                currentOrderCtx = await getCanvasFromUrl(`https://imgur.com/a/zfP64TB`, currentOrderCanvas, 0, 0, true);
-                order = getRealWork(currentOrderCtx.getImageData(0, 0, 2000, 2000).data);
-                Toastify({
-                    text: `Nieuwe map geladen, ${order.length} pixels in totaal`,
-                    duration: DEFAULT_TOAST_DURATION_MS
-                }).showToast();
-                break;
-            case 'toast':
-                Toastify({
-                    text: `Bericht van server: ${data.message}`,
-                    duration: data.duration || DEFAULT_TOAST_DURATION_MS,
-                    style: data.style || {}
-                }).showToast();
-                break;
-            default:
-                break;
-        }
-    };
-
-    socket.onclose = function (e) {
-        Toastify({
-            text: `PlaceNL server heeft de verbinding verbroken: ${e.reason}`,
-            duration: DEFAULT_TOAST_DURATION_MS
-        }).showToast();
-        console.error('Socketfout: ', e.reason);
-        socket.close();
-        setTimeout(connectSocket, 1000);
-    };
 }
 
 async function attemptPlace() {
@@ -258,7 +203,6 @@ async function attemptPlace() {
 }
 
 function place(x, y, color) {
-    socket.send(JSON.stringify({ type: 'placepixel', x, y, color }));
     return fetch('https://gql-realtime-2.reddit.com/query', {
         method: 'POST',
         body: JSON.stringify({
