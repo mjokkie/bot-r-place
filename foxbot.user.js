@@ -28,7 +28,7 @@ var currentPlaceCanvas = document.createElement('canvas');
 
 // Global constants
 
-const img_link = "https://i.imgur.com/ZSzTB4f.png"
+const img_link = "https://i.imgur.com/gUUK74P.png"
 
 const DEFAULT_TOAST_DURATION_MS = 5000;
 
